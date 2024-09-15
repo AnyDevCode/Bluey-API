@@ -1,14 +1,26 @@
-const express = require('express');
+const express = require("express");
 const app = express();
 
-require('dotenv').config();
+require("dotenv").config();
 
 const PORT = process.env.PORT || 3000;
 
-app.get('/', (req, res) => {
-    res.send('Hello World');
-    });
+app.use(
+  express.json({
+    extended: true,
+  })
+);
+app.use(
+  express.urlencoded({
+    extended: true,
+  })
+);
+app.use(express.static("public"));
+
+app.get("/", (req, res) => {
+  res.send("Hello World from Express");
+});
 
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-    });
+  console.log(`Server is running on port ${PORT}`);
+});
