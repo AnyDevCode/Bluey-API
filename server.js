@@ -17,8 +17,7 @@ app.use(
 );
 app.use(express.static("public"));
 
-app.use("/v1/episodes", require("./routes/v1/episodes"));
-app.use("/v1/characters", require("./routes/v1/characters"));
+app.use("/", require("./routes/v1/router"));
 
 app.get("/", (req, res) => {
   res.send("Hello World from Express");
